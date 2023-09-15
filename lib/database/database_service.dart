@@ -22,6 +22,7 @@ class DatabaseService {
   }
 
   Future<Database> _initialize() async {
+    print("initializeing");
     final path = await fullPath;
     var database = await openDatabase(path,
         version: 1, onCreate: create, singleInstance: true);

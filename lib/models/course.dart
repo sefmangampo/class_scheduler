@@ -17,6 +17,18 @@ class Course {
       required this.createdAt,
       this.updatedAt});
 
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'fullname': fullname,
+      'descripton': description,
+      'isActive': isActive,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt
+    };
+  }
+
   factory Course.fromSqlfliteDatabase(Map<String, dynamic> map) => Course(
         id: map['id']?.toInt() ?? 0,
         name: map['name'] ?? '',

@@ -6,7 +6,7 @@ String createCoursesTable() {
           "fullname"  TEXT,
           "description" TEXT,
           "is_active" INTEGER,
-          "created_at" INTEGER NOT NULL DEFAULT (cast(strftime('%s','now) as int))
+          "created_at" INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP,
           "updated_at" INTEGER,
           PRIMARY KEY("id" AUTOINCREMENT)
         );""";

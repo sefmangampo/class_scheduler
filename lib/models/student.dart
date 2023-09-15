@@ -4,8 +4,6 @@ class Student {
   final String lastname;
   final String idNumber;
   final bool isMale;
-  final int? courseId;
-  final int? sectionId;
   final int id;
   final bool isActive;
   final String createdAt;
@@ -20,9 +18,21 @@ class Student {
       required this.isMale,
       required this.createdAt,
       required this.isActive,
-      required this.courseId,
-      required this.sectionId,
       this.updatedAt});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'firstname': firstname,
+      'lastname': lastname,
+      'middlename': middlename,
+      'idNumber': idNumber,
+      'isMale': isMale,
+      'isActive': isActive,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt
+    };
+  }
 
   factory Student.fromSqlfliteDatabase(Map<String, dynamic> map) => Student(
         id: map['id']?.toInt() ?? 0,
@@ -30,8 +40,6 @@ class Student {
         middlename: map['middlename'] ?? '',
         lastname: map['lastname'] ?? '',
         idNumber: map['id_number'] ?? '',
-        courseId: map['course_id']?.toInt() ?? 0,
-        sectionId: map['section_id']?.toInt() ?? 0,
         isMale: map['is_male']?.toInt() == 1 ? true : false,
         isActive: map['is_active']?.toInt() == 1 ? true : false,
         createdAt: DateTime.fromMillisecondsSinceEpoch(map['created_at'])

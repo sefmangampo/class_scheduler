@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:san_na_ko/pages/courses_page.dart';
 import 'package:san_na_ko/screens/home/home_screen.dart';
+import 'package:san_na_ko/screens/home/main_screen.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,14 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return CupertinoApp(
       debugShowCheckedModeBanner: false,
       title: 'Namer App',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
-      ),
-      home: HomePage(),
+      theme: CupertinoThemeData(brightness: Brightness.dark),
+      home: MainPage(),
     );
   }
 }

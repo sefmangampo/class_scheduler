@@ -16,6 +16,18 @@ class Professor {
       required this.isActive,
       this.updatedAt});
 
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'firstname': firstname,
+      'lastname': lastname,
+      'isMale': isMale,
+      'isActive': isActive,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt
+    };
+  }
+
   factory Professor.fromSqlfliteDatabase(Map<String, dynamic> map) => Professor(
         id: map['id']?.toInt() ?? 0,
         firstname: map['firstname'] ?? '',

@@ -16,6 +16,18 @@ class Location {
       required this.createdAt,
       this.updatedAt});
 
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'isVirtual': isVirtual,
+      'isActive': isActive,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt
+    };
+  }
+
   factory Location.fromSqlfliteDatabase(Map<String, dynamic> map) => Location(
         id: map['id']?.toInt() ?? 0,
         name: map['name'] ?? '',

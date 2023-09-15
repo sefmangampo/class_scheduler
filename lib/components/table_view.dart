@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+final weekdays = DateFormat().dateSymbols.WEEKDAYS;
 
 List<Widget> _buildCells(int count) {
   return List.generate(
@@ -10,6 +13,20 @@ List<Widget> _buildCells(int count) {
       color: Colors.white,
       margin: EdgeInsets.all(4.0),
       child: Text("${index + 1}"),
+    ),
+  );
+}
+
+_headerCell(String s) {
+  return Container(
+    alignment: Alignment.center,
+    width: 90.0,
+    height: 30.0,
+    color: Color.fromARGB(255, 214, 119, 41),
+    margin: EdgeInsets.all(2.0),
+    child: Text(
+      s,
+      style: TextStyle(fontSize: 10),
     ),
   );
 }
@@ -26,27 +43,44 @@ _buildRows(int count) {
   ];
 }
 
-_buildHeader() {
-  var weekDays = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
-  ];
-
+_generateColumns(int number) {
   List<Container> list = List.empty(growable: true);
-  for (var i = 0; i < weekDays.length; i++) {
+  for (var i = 1; i < number; i++) {
     list.add(Container(
       alignment: Alignment.center,
       width: 90.0,
       height: 30.0,
-      color: Color.fromARGB(255, 214, 41, 128),
+      color: Color.fromARGB(255, 41, 162, 214),
       margin: EdgeInsets.all(2.0),
       child: Text(
-        weekDays[i],
+        '',
+        style: TextStyle(fontSize: 10),
+      ),
+    ));
+  }
+
+  return (Column(children: list));
+}
+
+_buildDayColumn(int dayNumber) {
+  var day = weekdays[dayNumber];
+
+  return Column(
+    children: [_headerCell(day), _generateColumns(15)],
+  );
+}
+
+_buildHeader() {
+  List<Container> list = List.empty(growable: true);
+  for (var i = 1; i < weekdays.length; i++) {
+    list.add(Container(
+      alignment: Alignment.center,
+      width: 90.0,
+      height: 30.0,
+      color: Color.fromARGB(255, 41, 145, 214),
+      margin: EdgeInsets.all(2.0),
+      child: Text(
+        weekdays[i],
         style: TextStyle(fontSize: 10),
       ),
     ));
@@ -54,8 +88,6 @@ _buildHeader() {
 
   return (Row(children: list));
 }
-
-_buildSchedules() {}
 
 _buildTimeColumn() {
   List<String> generateTimeString() {
@@ -110,13 +142,14 @@ class ScheduleView extends StatelessWidget {
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('hehe'),
-                Text('hehe'),
-                Column(
-                  children: [_buildHeader(), Text('sdfdsf'), Text('heheh')],
-                )
+                _buildDayColumn(1),
+                _buildDayColumn(2),
+                _buildDayColumn(3),
+                _buildDayColumn(4),
+                _buildDayColumn(5),
+                _buildDayColumn(6),
               ],
             ),
           ),

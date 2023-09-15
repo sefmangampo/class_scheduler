@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:san_na_ko/components/table_view.dart';
+import 'package:san_na_ko/components/student_info.dart';
 //import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -158,7 +159,8 @@ class HomePage extends StatelessWidget {
                               )
                             ],
                           ),
-                          ScheduleView()
+                          ScheduleView(),
+                          StudentInfoView()
                         ],
                       ),
                     )),
