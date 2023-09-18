@@ -11,8 +11,10 @@ class ScheduleTab extends StatefulWidget {
 
 class _ScheduleTabState extends State<ScheduleTab> {
   @override
-  Widget build(BuildContext context) => SingleChildScrollView(
-          child: Column(
-        children: [CurrentClassWidget(), ScheduleView()],
-      ));
+  Widget build(BuildContext context) => Column(
+        children: [
+          CurrentClassWidget(),
+          Flexible(child: SingleChildScrollView(child: ScheduleView()))
+        ],
+      );
 }
