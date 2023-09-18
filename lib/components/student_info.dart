@@ -6,7 +6,7 @@ Map<String, dynamic> studentInfo = {
   'Full Course:':
       'Bachelor of Industrial Technology Major in Food and Service Management',
   "Name:": 'Pernia, Aurvel Sorio',
-  "Section:": 'BIT 1-40 FSM-A',
+  "Section:": ['1-40 FSM-A', '1-40 FSM-A', '1-40 FSM-A'],
   'EAF No:': '209620'
 };
 
